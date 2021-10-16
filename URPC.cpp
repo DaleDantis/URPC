@@ -16,6 +16,7 @@
 #include <iostream>
 #include <vector>
 #include <bitset>
+#include <fstream>
 #include "Terminate_Complement.cpp"
 #include "max_binate.cpp"
 #include "Cofactor.cpp"
@@ -44,12 +45,10 @@ void Size_Number_IP(){                      //TEMPORARY
   cin >> cubeNo;
 }
 
+void Read_PCN()
+
 Vec_2D Complement(Vec_2D, int, int);
-// Vec_2D Terminate_Complement(Vec_2D, int, int);
-// int max_binate(Vec_2D, int, int);
-// Vec_2D Cofactor(Vec_2D Pol_Comp_i, int most_binate, int Size, int No, int type);
-// Vec_2D And_Function(Vec_2D Pol_Comp_i, int cofactor, int Size, int No, int type);
-// Vec_2D Or_Function(Vec_2D Pos_Cofactor, Vec_2D Neg_Cofactor);
+
 
 
 int main(){

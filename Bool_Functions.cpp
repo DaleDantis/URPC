@@ -1,26 +1,6 @@
-//  cubelist Complement( cubeList F ) { 
-//          check if F is simple enough to complement it directly and quit// 
-//               if ( F is simple and we can complement it directly ) 
-//                      return( directly computed complement of F )
-//
-//               else { // do recursion let x = most binate variable for splitting
-//                          cubeList P = Complement( positiveCofactor( F, x ) ) 
-//                          cubeList N = Complement( negativeCofactor( F, x ) )     
-//                          P = AND( x  , P ) 
-//                          N = AND( x’ , N )
-//                          return( OR( P, N ) ) 
-//                        } // end recursion
-//                    } // end function
-
-
 #include <iostream>
 #include <vector>
 #include <bitset>
-#include <fstream>
-#include "Terminate_Complement.cpp"
-#include "max_binate.cpp"
-#include "Cofactor.cpp"
-#include "Bool_Functions.cpp"
 
 using std::cout;
 using std::cin;
@@ -34,95 +14,59 @@ using std::vector;
 #define Vec_2D    vector<vector<int>>
 
 
-int cubeSize, cubeNo, count=0;
-void Size_Number_IP(){                      //TEMPORARY
-  cout << endl << "Enter the Size and the Number of Cubes: ";
+Vec_2D And_Function(Vec_2D Pol_Comp_i, int cofactor, int Size, int No, int type){
   
-  cout << endl << "Cube Size: = ";
-  cin >> cubeSize;
+  if( type == 1){
+    for(int i = 0; i < Pol_Comp_i.size(); i++){
 
-  cout<< endl << "Number of Cubes: = ";
-  cin >> cubeNo;
-}
+        if(Pol_Comp_i[i][cofactor] == DC){
+          Pol_Comp_i[i][cofactor] = Positive;
+        }
 
-void Read_PCN()
-
-Vec_2D Complement(Vec_2D, int, int);
-
-
-
-int main(){
-    Size_Number_IP();
-    int temp;
-    Vec_2D Polarities;
-
-    for(int i = 0; i < cubeNo; i++){
-      vector<int> Variables;
-
-
-      //TEMPORARY
-      for (int j = 0; j < cubeSize; j++)
-      {     bool_ip_repeat:
-              cin >> temp;
-              
-            if(temp > 3){
-              cout << endl << "Retry with values <= 3" << endl;
-              goto bool_ip_repeat;
-            }
-
-            Variables.push_back(temp);
-
-      }
-      Polarities.push_back(Variables); 
-      cout << endl << "Next cube" << endl << endl << endl;
-    }
-
-    Vec_2D Pol_Comp_o = Complement(Polarities, cubeSize, cubeNo);
-
-    for(int i = 0; i < Pol_Comp_o.size(); i++){
-      for (int j = 0; j < Pol_Comp_o[i].size(); j++){
-          cout << Pol_Comp_o[i][j] << " ";
-      }
-      cout << endl << endl;
-          
-    } 
-
-    return 0;
-
-}
-
-Vec_2D Complement(Vec_2D Pol_Comp_i, int Size, int No){
-
-  Vec_2D Pol_Comp; 
-  int most_binate;
-  Pol_Comp = Terminate_Complement(Pol_Comp_i, Size, No );
-  
-  if(Pol_Comp.size() == 0){
-    most_binate = max_binate(Pol_Comp_i, Size, No );
-    // cout << "\n\n" << most_binate + 1 <<"\n\n";
-
-    Vec_2D P = Cofactor(Pol_Comp_i, most_binate, Pol_Comp_i[0].size(), Pol_Comp_i.size(), 1);// Cofactor(Input vector(F), most_binate(x), Size, Number, Positive Cofactor)
-    Vec_2D N = Cofactor(Pol_Comp_i, most_binate, Pol_Comp_i[0].size(), Pol_Comp_i.size(), 0);// Cofactor(Input vector(F), most_binate(x), Size, Number, Negative Cofactor)
-    P = Complement( P, P[0].size(), P.size() );//Recursive function, Complement the Cofactored functions
-    N = Complement( N, N[0].size(), N.size() );
-    P = And_Function(P, most_binate, P[0].size(), P.size(), 1);
-    N = And_Function(N, most_binate, N[0].size(), N.size(), 0);
-
-    Pol_Comp = Or_Function(P, N);
-
-
-
+    }  
   }
 
 
-  return Pol_Comp;
+  //Negative Cofactor
+  else if( type == 0 ){
+
+    // cout << endl << No << endl << Size << endl;
+    for(int i = 0; i < Pol_Comp_i.size(); i++){
+
+        if(Pol_Comp_i[i][cofactor] == DC){
+          Pol_Comp_i[i][cofactor] = Negative;
+        }
+
+                  
+    }     
+  } 
+
+
+  // for(int i = 0; i < Pol_Comp_i.size(); i++){
+  //   for (int j = 0; j < Pol_Comp_i[i].size(); j++){
+  //       cout << Pol_Comp_i[i][j] << " ";
+  //   }
+  //   cout << endl << endl;
+        
+  // } 
+  // cout << endl << endl;  
+  return Pol_Comp_i;
 }
 
 
+Vec_2D Or_Function(Vec_2D Pos_Cofactor, Vec_2D Neg_Cofactor){
 
+  for(int i = 0; i < Neg_Cofactor.size(); i++){
+    Pos_Cofactor.push_back(Neg_Cofactor[i]);
+  }
 
-
-
-
-
-
+  // for(int i = 0; i < Pos_Cofactor.size(); i++){
+  //   for (int j = 0; j < Pos_Cofactor[i].size(); j++){
+  //       cout << Pos_Cofactor[i][j] << " ";
+  //   }
+  //   cout << endl << endl;
+        
+  // } 
+  // cout << endl << endl;  
+  return Pos_Cofactor;
+}
