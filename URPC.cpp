@@ -15,16 +15,23 @@
 
 #include <iostream>
 #include <vector>
-#include <bitset>
+#include <fstream>
+#include <string>
+#include "Read_PCN.cpp"
 #include "Terminate_Complement.cpp"
 #include "max_binate.cpp"
 #include "Cofactor.cpp"
 #include "Bool_Functions.cpp"
+#include "Write_PCN.cpp"
 
 using std::cout;
 using std::cin;
 using std::endl;
 using std::vector;
+using std::string;
+using std::fstream;
+using std::ifstream;
+using std::ofstream;
 
 #define Positive  1
 #define Negative  2
@@ -33,73 +40,58 @@ using std::vector;
 #define Vec_2D    vector<vector<int>>
 
 
-int cubeSize, cubeNo, count=0;
-void Size_Number_IP(){                      //TEMPORARY
-  cout << endl << "Enter the Size and the Number of Cubes: ";
-  
-  cout << endl << "Cube Size: = ";
-  cin >> cubeSize;
 
-  cout<< endl << "Number of Cubes: = ";
-  cin >> cubeNo;
-}
+
 
 Vec_2D Complement(Vec_2D, int, int);
-// Vec_2D Terminate_Complement(Vec_2D, int, int);
-// int max_binate(Vec_2D, int, int);
-// Vec_2D Cofactor(Vec_2D Pol_Comp_i, int most_binate, int Size, int No, int type);
-// Vec_2D And_Function(Vec_2D Pol_Comp_i, int cofactor, int Size, int No, int type);
-// Vec_2D Or_Function(Vec_2D Pos_Cofactor, Vec_2D Neg_Cofactor);
+
 
 
 int main(){
-    Size_Number_IP();
-    int temp;
-    Vec_2D Polarities;
+  // Size_Number_IP();
+  int temp;
+  Vec_2D Polarities;
+  string Input_filename = "../ProgrammingAssignment1Files/UnateRecursiveComplement/part5.pcn";
+  string Output_filename = "../Output/part5.pcn";
+  Vec_2D input_values = Read_PCN(Input_filename);
 
-    for(int i = 0; i < cubeNo; i++){
-      vector<int> Variables;
-
-
-      //TEMPORARY
-      for (int j = 0; j < cubeSize; j++)
-      {     bool_ip_repeat:
-              cin >> temp;
-              
-            if(temp > 3){
-              cout << endl << "Retry with values <= 3" << endl;
-              goto bool_ip_repeat;
-            }
-
-            Variables.push_back(temp);
-
+  Vec_2D Pol_Comp_o = Complement(input_values, cubeSize, cubeNo);
+    // To remove the Zeros in the PCN function
+  for(int i = 0; i < Pol_Comp_o.size(); i++){
+    for (int j = 0; j < Pol_Comp_o[i].size(); j++){
+      if(Pol_Comp_o[i][j] == Zero){
+        Pol_Comp_o.erase(Pol_Comp_o.begin() + i);
+        i--;
+        // No--;
       }
-      Polarities.push_back(Variables); 
-      cout << endl << "Next cube" << endl << endl << endl;
     }
+  }
+  Write_PCN(Output_filename, Pol_Comp_o);
 
-    Vec_2D Pol_Comp_o = Complement(Polarities, cubeSize, cubeNo);
 
-    for(int i = 0; i < Pol_Comp_o.size(); i++){
-      for (int j = 0; j < Pol_Comp_o[i].size(); j++){
-          cout << Pol_Comp_o[i][j] << " ";
-      }
-      cout << endl << endl;
+
+    // for(int i = 0; i < Pol_Comp_o.size(); i++){
+    //   for (int j = 0; j < Pol_Comp_o[i].size(); j++){
+    //       cout << Pol_Comp_o[i][j] << " ";
+    //   }
+    //   cout << endl << endl;
           
-    } 
+    // } 
 
-    return 0;
+  return 0;
 
 }
 
 Vec_2D Complement(Vec_2D Pol_Comp_i, int Size, int No){
 
   Vec_2D Pol_Comp; 
+
   int most_binate;
   Pol_Comp = Terminate_Complement(Pol_Comp_i, Size, No );
+  // Pol_Comp = Terminate_Complement(Pol_Comp_i, Size, Pol_Comp_i.size() );
   
   if(Pol_Comp.size() == 0){
-    most_binate = max_binate(Pol_Comp_i, Size, No );
+    most_binate = max_binate(Pol_Comp_i, Pol_Comp_i[0].size(), Pol_Comp_i.size() );
     // cout << "\n\n" << most_binate + 1 <<"\n\n";
 
     Vec_2D P = Cofactor(Pol_Comp_i, most_binate, Pol_Comp_i[0].size(), Pol_Comp_i.size(), 1);// Cofactor(Input vector(F), most_binate(x), Size, Number, Positive Cofactor)
