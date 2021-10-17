@@ -1,6 +1,6 @@
-#include <iostream>
-#include <vector>
-#include <bitset>
+// #include <iostream>
+// #include <vector>
+// #include <bitset>
 
 using std::cout;
 using std::cin;
@@ -19,7 +19,7 @@ Vec_2D Terminate_Complement(Vec_2D Pol_Term_i, int Size, int No){
   int cube_Zero = 0;//For a cube that has a 00 in it
   int cube_One = 0;//Checks if there are all 11 or all don't care cubes
 
-  //TERMINATION CONDITION - 1(If Cubelist F doesn't exist)
+  //TERMINATION CONDITION - 1(If the whole Cubelist F doesn't exist)
   for(int i = 0; i < No; i++){
     for (int j = 0; j < Size; j++){
         if(Pol_Term_i[i][j] == Zero){
