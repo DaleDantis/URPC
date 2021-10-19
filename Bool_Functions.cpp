@@ -1,5 +1,3 @@
-
-
 using std::cout;
 using std::cin;
 using std::endl;
@@ -39,15 +37,6 @@ Vec_2D And_Function(Vec_2D Pol_Comp_i, int cofactor, int Size, int No, int type)
     }     
   } 
 
-
-  // for(int i = 0; i < Pol_Comp_i.size(); i++){
-  //   for (int j = 0; j < Pol_Comp_i[i].size(); j++){
-  //       cout << Pol_Comp_i[i][j] << " ";
-  //   }
-  //   cout << endl << endl;
-        
-  // } 
-  // cout << endl << endl;  
   return Pol_Comp_i;
 }
 
@@ -58,13 +47,5 @@ Vec_2D Or_Function(Vec_2D Pos_Cofactor, Vec_2D Neg_Cofactor){
     Pos_Cofactor.push_back(Neg_Cofactor[i]);
   }
 
-  // for(int i = 0; i < Pos_Cofactor.size(); i++){
-  //   for (int j = 0; j < Pos_Cofactor[i].size(); j++){
-  //       cout << Pos_Cofactor[i][j] << " ";
-  //   }
-  //   cout << endl << endl;
-        
-  // } 
-  // cout << endl << endl;  
   return Pos_Cofactor;
 }

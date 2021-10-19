@@ -48,8 +48,6 @@ Vec_2D Complement(Vec_2D, int, int);
 
 
 int main(){
-  // Size_Number_IP();
-  int temp;
   Vec_2D Polarities;
   string Input_filename = "../ProgrammingAssignment1Files/UnateRecursiveComplement/part5.pcn";
   string Output_filename = "../Output/part5.pcn";
@@ -62,21 +60,10 @@ int main(){
       if(Pol_Comp_o[i][j] == Zero){
         Pol_Comp_o.erase(Pol_Comp_o.begin() + i);
         i--;
-        // No--;
       }
     }
   }
   Write_PCN(Output_filename, Pol_Comp_o);
-
-
-
-    // for(int i = 0; i < Pol_Comp_o.size(); i++){
-    //   for (int j = 0; j < Pol_Comp_o[i].size(); j++){
-    //       cout << Pol_Comp_o[i][j] << " ";
-    //   }
-    //   cout << endl << endl;
-          
-    // } 
 
   return 0;
 
@@ -92,7 +79,6 @@ Vec_2D Complement(Vec_2D Pol_Comp_i, int Size, int No){
   
   if(Pol_Comp.size() == 0){
     most_binate = max_binate(Pol_Comp_i, Pol_Comp_i[0].size(), Pol_Comp_i.size() );
-    // cout << "\n\n" << most_binate + 1 <<"\n\n";
 
     Vec_2D P = Cofactor(Pol_Comp_i, most_binate, Pol_Comp_i[0].size(), Pol_Comp_i.size(), 1);// Cofactor(Input vector(F), most_binate(x), Size, Number, Positive Cofactor)
     Vec_2D N = Cofactor(Pol_Comp_i, most_binate, Pol_Comp_i[0].size(), Pol_Comp_i.size(), 0);// Cofactor(Input vector(F), most_binate(x), Size, Number, Negative Cofactor)

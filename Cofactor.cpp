@@ -1,7 +1,3 @@
-// #include <iostream>
-// #include <vector>
-// #include <bitset>
-
 using std::cout;
 using std::cin;
 using std::endl;
@@ -17,7 +13,6 @@ using std::vector;
 
 Vec_2D Cofactor(Vec_2D Pol_Comp_i, int most_binate, int Size, int No, int type){
 
-  // cout<< "\n\t" << ++count << endl;
   //Positive Cofactor 
   if( type == 1){
     for(int i = 0; i < No; i++){
@@ -39,7 +34,6 @@ Vec_2D Cofactor(Vec_2D Pol_Comp_i, int most_binate, int Size, int No, int type){
   //Negative Cofactor
   else if( type == 0 ){
 
-    // cout << endl << No << endl << Size << endl;
     for(int i = 0; i < No; i++){
 
         if(Pol_Comp_i[i][most_binate] == Negative){
@@ -56,14 +50,6 @@ Vec_2D Cofactor(Vec_2D Pol_Comp_i, int most_binate, int Size, int No, int type){
   } 
 
 
-//   for(int i = 0; i < Pol_Comp_i.size(); i++){
-//     for (int j = 0; j < Pol_Comp_i[i].size(); j++){
-//         cout << Pol_Comp_i[i][j] << " ";
-//     }
-//     cout << endl << endl;
-        
-//   } 
-//   cout << endl << endl;  
 
   return Pol_Comp_i;
 }

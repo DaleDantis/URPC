@@ -1,7 +1,3 @@
-// #include <iostream>
-// #include <vector>
-// #include <bitset>
-
 using std::cout;
 using std::cin;
 using std::endl;
@@ -37,13 +33,6 @@ Vec_2D Terminate_Complement(Vec_2D Pol_Term_i, int Size, int No){
     }
     Pol_Term_Comp.push_back(Variables);
 
-    // for(int i = 0; i < 1; i++){
-    //   for (int j = 0; j < Pol_Term_Comp[0].size(); j++){
-    //       cout << Pol_Term_Comp[i][j] << " " << endl <<endl;
-
-    //   }
-          
-    // }    
   }
 
 
@@ -65,12 +54,6 @@ Vec_2D Terminate_Complement(Vec_2D Pol_Term_i, int Size, int No){
     }
     Pol_Term_Comp.push_back(Variables);
 
-    // for(int i = 0; i < 1; i++){
-    //   for (int j = 0; j < Pol_Term_Comp[0].size(); j++){
-    //       cout << Pol_Term_Comp[i][j] << " " << endl <<endl;
-    //   }
-          
-    // }    
   }
 
   //TERMINATION CONDITION - 3(If F has only one cube, can complement using De Morgan's Laws)
@@ -115,13 +98,6 @@ Vec_2D Terminate_Complement(Vec_2D Pol_Term_i, int Size, int No){
           
     }
 
-  //   for(int i = 0; i < Pol_Term_Comp.size(); i++){
-  //     for (int j = 0; j < Pol_Term_Comp[i].size(); j++){
-  //         cout << Pol_Term_Comp[i][j] << " ";
-  //     }
-  //     cout << endl << endl;
-          
-  //   } 
   }
   return Pol_Term_Comp;
  

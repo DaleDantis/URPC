@@ -1,7 +1,3 @@
-// #include <iostream>
-// #include <vector>
-// #include <bitset>
-
 using std::cout;
 using std::cin;
 using std::endl;
@@ -33,14 +29,10 @@ Vec_2D Read_PCN(string filename){
   int x;
   if(input_file.is_open()){
     while ( input_file >> x){
-        // cout << x << "\t";
         input_integers.push_back(x);// and read integer from file, DEBUG: Use a 2D Vector
         cnt++;
     }
-    // cout<<"The integers are:"<<"\n";      // print the integers stored in the array
-    // for (int i = 0; i < cnt; i++) {
-    //     cout << input_integers[i] <<' ';
-    // }
+
 
 
   //close the file
@@ -57,7 +49,6 @@ Vec_2D Read_PCN(string filename){
   for(int i = 0; i < cubeNo; i++){
     vector<int> Variables;
     no_active = input_integers[ ++no_val_read];
-    // no_val_read++;
     var_counted = 0;
     for(int j = 0; j < cubeSize; j++){
       if((j == abs(input_integers[no_val_read + 1] ) - 1) && (var_counted != no_active)){
@@ -75,13 +66,6 @@ Vec_2D Read_PCN(string filename){
     
   }
 
-    // for(int i = 0; i < Polarities.size(); i++){
-    //   for (int j = 0; j < Polarities[i].size(); j++){
-    //       cout << Polarities[i][j] << " ";
-    //   }
-    //   cout << endl << endl;
-          
-    // } 
 
    return Polarities;
 }
